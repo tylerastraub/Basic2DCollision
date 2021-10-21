@@ -1,0 +1,7 @@
+# File types
+*.dll
+*.exe
+
+# Directories
+build/*
+.vscode/*
