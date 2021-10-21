@@ -31,6 +31,10 @@ add_executable(SecretProject ${SOURCES})
 # remove -mconsole for release builds
 target_link_libraries(SecretProject -lmingw32 ${SDL2_LIBRARY_DIR}/libSDL2main.a ${SDL2_LIBRARY_DIR}/libSDL2.dll.a ${SDL2_IMAGE_LIBRARY_DIR}/libSDL2_image.dll.a -mwindows -mconsole)
 
+add_custom_command(TARGET SecretProject POST_BUILD
+                    COMMAND ${CMAKE_COMMAND} -E copy_directory
+                    ${PROJECT_SOURCE_DIR}/res/ $<TARGET_FILE_DIR:SecretProject>/res/)
+
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
 include(CPack)
